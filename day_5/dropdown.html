@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var divisionObject = {
+            "Dhaka": {
+                "Gazipur": {},
+                "Gopalganj": {},
+                "Tangail": {},
+                "Narayanganj": {},
+            },
+            "Rajshahi": {
+                "Sirajgonj": {},
+                "Bogura": {},
+                "Pabna": {},
+            },
+            "Sylhet": {
+                "Sunamgoj": {},
+                "Molobibazar": {},
+            }
+
+        }
+        window.onload = function () {
+            var divisionSel = document.getElementById("division");
+            var districtSel = document.getElementById("district");
+            
+            for (var x in divisionObject) {
+                divisionSel.options[divisionSel.options.length] = new Option(x, x);
+            }
+            divisionSel.onchange = function () {
+                districtSel.length = 1;
+                for (var y in divisionObject[this.value]) {
+                    districtSel.options[districtSel.options.length] = new Option(y, y);
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>District</h1>
+
+    <form name="form1" id="form1" action="/action_page.php">
+        Division: <select name="division" id="division">
+            <option value="" selected="selected">Select Division</option>
+        </select>
+        <br><br>
+        District: <select name="district" id="district">
+            <option value="" selected="selected">Select District</option>
+        </select>
+
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
